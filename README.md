@@ -1,12 +1,12 @@
-# WikiDev
-  - Author: Phong Le
-> WikiDev is about creating a blog environment that is friendly with developers.
+# HobbyFinder
+  - Author: Phong Le, Seth Gruver, and Eujun Chin
+> HobbyFinder is about creating a blog environment that is friendly with developers.
 
 ### Version
 1.0.0
 
 ### Tech
-WikiDev uses a number of tools provided below:
+HobbyFinder uses a number of tools provided below:
 
 * [node.js] - evented I/O for the backend
 * [jQuery] - JavaScript Library
@@ -45,7 +45,7 @@ localhost/page
 username: admin
 password: insecurepassword
 ```
-By using admin account, you can see the list of all users. 
+By using admin account, you can see the list of all users.
 
 ### Limitations
 For some reason, the localhost '/' keeps redirecting to '/wiki'.
