@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<div class="container">
+  <li>
+    <a href="/page/<%= page.id %>">
+      <%= page.name %>
+      [<%= page.author %>]
+    </a> &nbsp;
+    <a class='bttn' href="/page/<%= page.id %>/delete">x</a>
+  </li>
+</div>

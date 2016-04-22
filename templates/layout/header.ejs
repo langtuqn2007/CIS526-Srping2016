@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!doctype html>
+<html>
+  <div class="container">
+    <head>
+      <title><%= title %></title>
+      <link href="/style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+      <div class="right">
+        <% if(user.username == "Guest") { %>
+            <p><a class="btn btn-large btn-info" href="/login">Login</a></p>
+            <p>Don't have an account yet? <a class="btn btn-large btn-info" href="/users/new">Signup</a></p>
+
+        <% } else { %>
+          Welcome <%= user.username %>.  Not you? <a class="btn btn-large btn-info" href="/logout">Logout</a>
+        <% } %>
+      </div>
+      <div class="left">
+        <p><a class="btn btn-large btn-info" href="/users">uList</a></p>
+      </div>

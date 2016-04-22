@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<div class="container">
+  <li>
+    <%= users.username %>
+      <a class='bttn' href="/users/<%= users.id %>/delete">(x)</a> -> Authority:
+      <% if(users.admin == false){ %>
+          Normal User
+          <%} else {%>
+              Admin User
+              <% } %>
+                <!--  -> Activity Status:
+                  <% if(users.banuser == false){ %>
+                      ACTIVE
+                      <%} else {%>
+                          K.I.A
+                          <% } %> -->
+  </li>
+</div>

@@ -1,0 +1,60 @@
+
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<div class="container">
+  <div class="jumbotron">
+    <%- include('../layout/header', {title: "page Page " + page.name, user: user}) %>
+    <h1>
+        <%= page.name %>
+    </h1>
+  </div>
+
+  <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#content">Content</a></li>
+      <li><a data-toggle="tab" href="#talk">Talk</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="content" class="tab-pane fade in active">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <dl><h2><u>Author</u>: <%= page.author %></h2></dl>
+        </div>
+        <div class= "panel-body">
+          <pre><%- markContent %></pre>
+          <hr>
+          <% if(user.username != "Guest") { %>
+          <input type="button" name="editcontent" value="Edit Content" onClick="editContent()" class="btn btn-primary btn-md" />
+          <div id="textarea1" style="display:none;">
+            <form method="POST" action="/page/<%= page.id %>/editContent">
+              <textarea name="description" rows="25" cols="50"><%- markContent %></textarea>
+              <h1>Markdown Supported. <em>In case you need help in formatting, </em><a class="btn btn-large btn-info" href="http://dillinger.io/">go to this page</a></h1>
+              <button type="submit" class="btn btn-primary btn-sm">Done Editing</button>
+            </form>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <div id="talk" class="tab-pane fade">
+      <pre><%- markTalk %>  </pre>
+      <hr>
+      <% if(user.username != "Guest") { %>
+      <input type="button" name="edittalk" value="Edit Talk" onClick="editTalk()" class="btn btn-primary btn-md" />
+      <div id="textarea" style="display:none;">
+        <form method="POST" action="/page/<%= page.id %>/edit">
+          <textarea name="talk" rows="25" cols="50"><%- markTalk %></textarea>
+          <h1>Markdown Supported. <em>In case you need help in formatting, </em><a class="btn btn-large btn-info" href="http://dillinger.io/">go to this page</a></h1>
+          <button type="submit" class="btn btn-primary btn-sm">Done Editing</button>
+        </form>
+      </div>
+      <% } %>
+    </div>
+    <div id="return">
+      <a class="btn btn-large btn-info" href="/page">Return to the homepage</a>
+    </div>
+  </div>
+</script>

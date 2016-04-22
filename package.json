@@ -1,0 +1,26 @@
+{
+  "name": "devwiki",
+  "version": "0.0.1",
+  "description": "A wiki page using Node that allows people to discuss things over",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Wiki"
+  ],
+  "author": "Phong Le",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "browserify": "^13.0.0",
+    "client-sessions": "^0.7.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "formidable": "^1.0.17",
+    "jquery": "^2.2.1",
+    "marked": "^0.3.5",
+    "passport": "^0.3.2",
+    "sqlite3": "^3.1.3"
+  }
+}

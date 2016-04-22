@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<div class="container">
+  <%- include('../layout/header', {title: "Logged Out", user: user}) %>
+  <h1>Logged Out!</h1>
+  <p>You have logged out successfully</p>
+  <p>
+    <a class="btn btn-large btn-info" href="/login">Sign back in?</a>
+  </p>
+</div>
