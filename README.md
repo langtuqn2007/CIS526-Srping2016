@@ -19,7 +19,6 @@ HobbyFinder uses a number of tools provided below:
 * [client-sessions] - middleware that implements sessions in encrypted tamper-free cookies
 * [ejs] - Embedded JavaScript templates
 * [passport] - authentication middleware
-* Big chunks of lecture's tool, especially equipment_express
 
 ### Installation
 Install required packages:
