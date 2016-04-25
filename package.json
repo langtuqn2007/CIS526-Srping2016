@@ -1,14 +1,27 @@
 {
-  "name": "Hobby Finder",
+  "name": "hobbyfinder",
   "version": "0.1.0",
-  "description": "A webpage that connects people with the same hobby together",
+  "description": "A website that connects people with the same hobby",
   "main": "app.js",
   "scripts": {
-    "install": "node ./database/seeds.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Team LGP",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/langtuqn2007/CIS526-Srping2016.git"
+  },
+  "keywords": [
+    "Hobby",
+    "Finder",
+    "Web",
+    "KSU"
+  ],
+  "author": "TeamLGP: Phong Le, Seth Gruver, Eujun Chin",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/langtuqn2007/CIS526-Srping2016/issues"
+  },
+  "homepage": "https://github.com/langtuqn2007/CIS526-Srping2016#readme",
   "dependencies": {
     "client-sessions": "^0.7.0",
     "ejs": "^2.4.1",
