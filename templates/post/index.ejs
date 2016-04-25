@@ -1,0 +1,10 @@
+<%- include('../layout/header', {title: "Post List", user: user}) %>
+<% title = "Post List" %>
+<h1>List of Post</h1>
+<ul>
+  <% post.forEach(function(post) { %>
+    <%- include('_post', {post: post}) %>
+  <% }); %>
+</ul>
+<a href="/post/users">Users</a>
+<a href="/post/new">Add post</a>

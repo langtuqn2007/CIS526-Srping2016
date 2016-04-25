@@ -4,6 +4,7 @@ var express = require('express'),
     loadUser = require('./middleware/load_user'),
     noGuests = require('./middleware/no_guests'),
     adminOnly = require('./middleware/admin_only'),
+    noBan = require('./middleware/no_ban'),
     encryption = require('./encryption');
 
 // Enable template engine
@@ -30,25 +31,24 @@ app.get('/login', session.new);
 app.post('/login', session.create);
 app.get('/logout', session.destroy);
 
-// page routes
-var page = require('./endpoints/page');
-app.get('/', page.redirect);
-app.get('/page', page.index);
-app.get('/page/new', page.new);
-app.get('/page/:id', page.show);
-app.post('/page', page.create);
-app.get('/page/:id/delete', page.destroy);
-app.post('/page/:id/edit', page.edit);
-app.post('/page/:id/editContent', page.editContent);
+// post routes
+var post = require('./endpoints/post');
+app.get('/post', post.index);
+app.get('/post/users', adminOnly, post.users);
+app.get('/post/new', noGuests, post.new);
+app.get('/post/:id/edit',noBan, post.edit);
+app.get('/post/:id/talk',noGuests, post.talk);
+app.get('/post/:id/addComment',noGuests, post.addComment);
+app.post('/post/:id/pushComment', post.pushComment);
+app.get('/post/:id/ban', post.ban);
+app.post('/post/:id', post.update);
+app.get('/post/:id', post.show);
+app.post('/post', post.create);
+app.get('/post/:id/delete', post.destroy);
 
-// users routes
-var users = require('./endpoints/user');
-app.get('/users', users.index);
-app.get('/users/new', users.new);
-app.post('/users/new', users.create);
-app.get('/users/:id/delete', users.destroy);
-/*app.post('/users/ban', users.banUser);
-app.post('/users/unban', users.unbanUser);*/
+// Reservation routes
+var reservation = require('./endpoints/reservation');
+app.get('/reservation/new', noGuests, reservation.new);
 
 app.listen(80, () => {
   console.log("Listening on port 80...");

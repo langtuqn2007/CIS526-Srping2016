@@ -1,22 +1,17 @@
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
-<div class="container">
-  <%- include('../layout/header', {title: "New reservation", user: user}) %>
-  <h1>New Reservation for <%= user.username %></h1>
-  <form action="/reservation" method="POST">
-    <label for="starting_on">
-      Starting on:
-      <input name="starting_on" type="date" />
-    </label><br />
-    <label for="ending_on" type="date" />
-      Ending on:
-      <input name="ending_on" type="date" />
-    </label><br />
-    <label for="page">
-      Page:
-      <input name="page_name" id="page-name" type="text" />
-    </label><br />
-    <input type="submit" value="Save Reservation" />
-  </form>
-</div>
+<%- include('../layout/header', {title: "New reservation", user: user}) %>
+<h1>New Reservation for <%= user.username %></h1>
+<form action="/reservation" method="POST">
+  <label for="starting_on">
+    Starting on:
+    <input name="starting_on" type="date" />
+  </label><br />
+  <label for="ending_on" type="date" />
+    Ending on:
+    <input name="ending_on" type="date" />
+  </label><br />
+  <label for="post">
+    post:
+    <input name="post_name" id="post-name" type="text" />
+  </label><br />
+  <input type="submit" value="Save Reservation" />
+</form>

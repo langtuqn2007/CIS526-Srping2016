@@ -1,70 +1,12 @@
-# HobbyFinder
-  - Author: Phong Le, Seth Gruver, and Eujun Chin
-> HobbyFinder is about creating a blog environment that is friendly with developers.
-
-### Version
-1.0.0
-
-### Tech
-HobbyFinder uses a number of tools provided below:
-
-* [node.js] - evented I/O for the backend
-* [jQuery] - JavaScript Library
-* [formidable] - node.js module for parsing form data, especially file uploads.
-* [browserify] - bundling up all dependencies
-* [marked] - markdown parser and compiler
-* [bootstrap] - decorating website's design
-* [express] - more efficient for web design
-* [sqlite3] - database for the website
-* [client-sessions] - middleware that implements sessions in encrypted tamper-free cookies
-* [ejs] - Embedded JavaScript templates
-* [passport] - authentication middleware
-
-### Installation
-Install required packages:
-```sh
-node npm jquery formidable browserify marked boostrap express sqlite3 client-sessions ejs passport --save
-```
-Create database:
-```sh
-node ./database/seeds.js
-```
-Run server with:
-```sh
-node app.js
-```
-
-### Usage
-Open a web browser and type the line below to start using:
-```sh
-localhost/page
-```
- The admin account that was created:
-```sh
-username: admin
-password: insecurepassword
-```
-By using admin account, you can see the list of all users.
-
-### Limitations
-For some reason, the localhost '/' keeps redirecting to '/wiki'.
-There are also some problems with the marked down so that it cannot render. Since the time runs out, I have no choice but will try to fix it later. One of the main reasons I can assume is the asynchronous reading.
-
-License
-----
-
-MIT
-
-**!**
-
-   [formidable]: <https://github.com/felixge/node-formidable>
-   [node.js]: <http://nodejs.org>
-   [jQuery]: <https://www.npmjs.com/package/jQuery>
-   [browserify]: <http://browserify.org/>
-   [marked]: <https://github.com/chjj/marked>
-   [bootstrap]: <https://www.npmjs.com/package/bootstrap>
-   [express]: <https://www.npmjs.com/package/express>
-   [sqlite3]: <https://www.npmjs.com/package/sqlite3>
-   [client-sessions]: <https://www.npmjs.com/package/client-sessions>
-   [ejs]: <https://www.npmjs.com/package/ejs>
-   [passport]: <https://www.npmjs.com/package/passport>
+#README
+##1.0 Installion
+To install use `npm install wiki --save` to save the file to the current path in your app.
+##2.0 Running
+To run, use `var wiki = requires('wiki.js')` to reference the file and continue using.
+##3.0
+The admin is `admin` and `insecurepassword` to login.
+Test ban account is `sucks` and   `insecurepassword` to login.
+To post new article, click `Add Post` and type in markdown.
+To edit, alternatively click `Edit` under an article.
+To comment in the talk page, click `Add Comment` and add corresponding comment.
+To ban a user navigate to Users and click on the `x` by the user you would like to ban.

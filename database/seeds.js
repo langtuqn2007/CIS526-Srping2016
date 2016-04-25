@@ -7,15 +7,22 @@ db.serialize(function() {
   // Drop users table if it exists
   db.run("DROP TABLE IF EXISTS users");
   // Create the users table
-  db.run("CREATE TABLE users (id INTEGER PRIMARY KEY, username TEXT UNIQUE, admin BOOLEAN, password_digest TEXT, salt TEXT)");
+  db.run("CREATE TABLE users (id INTEGER PRIMARY KEY, username TEXT UNIQUE, admin BOOLEAN, ban BOOLEAN, password_digest TEXT, salt TEXT)");
   // Create a default user
   var salt = encryption.salt();
-  db.run("INSERT INTO users (username, admin, password_digest, salt) values (?,?,?,?)",
+  db.run("INSERT INTO users (username, admin, ban, password_digest, salt) values (?,?,?,?,?)",
     'admin',
     true,
+    false,
     encryption.digest('insecurepassword' + salt),
     salt
-    //false
+  );
+  db.run("INSERT INTO users (username, admin, ban, password_digest, salt) values (?,?,?,?,?)",
+    'sucks',
+    false,
+    true,
+    encryption.digest('insecurepassword1' + salt),
+    salt
   );
   // Log contents of the user table to the console
   db.each("SELECT * FROM users", function(err, row){
@@ -23,15 +30,30 @@ db.serialize(function() {
     console.log(row);
   });
 
+  db.run("DROP TABLE IF EXISTS talk");
+  // Create the users table
+  db.run("CREATE TABLE talk (id INTEGER PRIMARY KEY, username TEXT, comment TEXT, p_id INTEGER)");
+  // Create a default user
+  db.run("INSERT INTO talk (username, comment, p_id) values (?,?,?)",
+    'admin',
+    'hello, hello',
+    5
+  );
+  db.each("SELECT * FROM talk", function(err, row){
+    if(err) return console.error(err);
+    console.log(row);
+  });
 
-  // Drop page table if it exists
-  db.run("DROP TABLE IF EXISTS page");
-  // Create the page table
-  db.run("CREATE TABLE page (id INTEGER PRIMARY KEY, name VARCHAR(50), author VARCHAR(50), description TEXT, talk TEXT )");
-  // Populate the page table
-  db.run("INSERT INTO page (name, author, description) VALUES ('The Witcher 3: Wild Hunt', 'Wikipedia', 'A high-fantasy, action role-playing video game set in an open-world environment, developed by CD Projekt RED')");
-  // Log contents of page table to the console
-  db.each("SELECT * FROM page", function(err, row){
+  // Drop post table if it exists
+  db.run("DROP TABLE IF EXISTS post");
+  // Create the post table
+  db.run("CREATE TABLE post (id INTEGER PRIMARY KEY, title VARCHAR(64), body TEXT )");
+  // Populate the post table
+  for(var i = 0; i < 5; i++) {
+    db.run("INSERT INTO post (title, body) VALUES ('Racecar "+i+"', 'Racecar Racecar Racecar Racecar Racecar Racecar Racecar Racecar')");
+  }
+  // Log contents of post table to the console
+  db.each("SELECT * FROM post", function(err, row){
     if(err) return console.error(err);
     console.log(row);
   });
