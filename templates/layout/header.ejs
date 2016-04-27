@@ -182,14 +182,18 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
 <div class="header" style="text-align:right">
 <img src="src/icon.png" alt="Hobby Finder" style="float:left;padding-top:10px;padding-left:10px">
 <ul id="MenuBar1" class="MenuBarHorizontal">
-  <li><a href="index.html">home</a>
+  <li><a href="/">home</a>
   </li>
   <li><a href="hobby.html">hobbies</a>
   </li>
-  <li><a href="profile.html">profile</a>
+  <li><a href="/post/users">profile</a>
   </li>
 </ul>
-<a href="">login/sign up</a>
+<% if(user.username == "Guest") { %>
+  You can <a href="/login">login or sign up here</a>
+  <% } else { %>
+    Welcome <%= user.username %>.  Not you? <a href="/logout">logout</a>
+    <% } %>
 <!-- end .header -->
 </div>
 <div class="sidebar1">
@@ -198,58 +202,6 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
 <img src="src/dumby_pro_pic.png" alt="Profile Pic" style="">
 <ul>friends</ul>
 <ul>manage</ul>
-<ul>logout</ul>
 </div>
 <div class="content">
-<div class="interest">
-  <ul>
-    <li>1 History</li>
-    <li>2 Uses</li>
-    <ul>
-      <li> 2.1 Transportation</li>
-      <li> 2.2 Freeride</li>
-      <li> 2.3 Downhill</li>
-      <li> 2.4 Dancing</li>
-      <li> 2.5 Cruising</li>
-      <li> 2.6 Travel</li>
-    </ul>
-  </ul>
-
-  <!-- end .interest -->
 </div>
-
-<h2>Uses</h2>
-<p>Longboarding is the act of riding on a Longboard. Longboarding also has competitive races down hill, with some riders reaching speeds exceeding 50 miles per hour. (skateboard)|longboard skateboard]]. A longboard varies in shape and size unlike its set counterpart, the skateboard, and has more stability, traction and durability due to larger wheel size and lower wheel durometers. Many, but not all longboards, use trucks (axles) that contain different geometric parameters than a skateboard as well. These factors and their variation have given way to a variety of disciplines, functions and purposes for a longboard. The angles at which some longboards can turn, as well as their ability to coast long distances make them more suitable for cruising, and commuting, on streets than regular skateboards.</p>
-<p>The life of longboarding started in approximately the 1950s.[1] The idea of longboarding originated from surfers in Hawaii that wanted to take their surfing hobby to land when the waves where too small to surf.[1] Surfers then figured out a way of achieving their goal of bringing surfing to land by customizing their skateboards. They would grab a piece of thick plywood and shape it into a smaller version of a surfboard, then screw the trucks and wheels to the decks and head out to small hills to imitate the same moves they would do if they were out surfing. During the 1970s, a small group of longboarders honed their techniques. Some of the more notable longboarders from this period, such as Tom Sims and Brad Stradlund were profiled in a 1978 SkateBoarder magazine article entitled Cult of the Longboard.[2] These pioneers saw longboarding as a form of self-expression, and were influenced by surfing. However, despite the advent of polyurethane wheels (affectionately referred to as "thane" by longboarders[3]), longboarding did not reach a high degree of prevalence during the 1970s.[4]</p>
-
-<p>Longboards lived on as an underground sport with home hobbyists continuing to make boards in their garages or strap trucks onto snowboard decks using old Kryptonic wheels from the 70's or roller skating wheels.[citation needed]</p>
-
-<p>In the early 1990s, Sector 9 started mass-producing and selling longboards.[5] The 1990s also saw a change in truck technology: reverse kingpins made longboarding more stable.[citation needed]</p>
-
-<p>The Internet has made it possible for small groups of skateboarders to communicate with each other and also gain an audience they might not have had locally, allowing the sport to grow further.[citation needed] Multiple subbranches of longboarding exist with relatively small but hardcore groups of adherents like slalom, LDP (long distance pushing/pumping), downhill, dance, freeriding, technical hardwheel sliding and more.</p>
-
-<p>Besides diversifying into many "species", longboarding itself has also come back around full circle and is embracing more street oriented tricks and cross over events using ramps too as well as embracing its earlier beginnings in slalom, ditch skating and just speed itself and cornering.[citation needed]</p>
-
-<p>A longboard, generally considered to be longer that a standard skateboard, is now synonymous with any skateboard that ranges in sizes. In general a skateboard that ranges from the size of a persons foot to 22 inches is called a Penny board. Made popular by the plastic resin boards first created in 1973. From there the skateboard branches into two categories, longboard and skateboard. These names have less to do with the length and more to do with the use. The length of a longboard does have an impact on performance with most high performance boards ranging from 32-45 inches. Carving boards can range in size from 24"- 6' long. The most popular length-range is about 32 to 60 inches. (Average skateboards are 28- 32 inches, with most being about 31-31.5 inches long.[6]</p>
-
-<p>As well as usually being longer than a trick deck skateboard, longboards are typically equipped with larger, softer wheels which afford a smoother, faster ride.[7] However, depending on the durometer of the wheels used, it can be slower. There are many different uses for longboards, as shown below. Since longboards use softer bushings than a typical tech skateboard, carving is generally easier. Most longboards will use trucks with a much lower angle for enhanced turning. The trucks are often wider and will turn much sharper than skateboard trucks. Wider trucks also offer better stability. Some trucks use springs instead of bushings, such as Seismic trucks, or Original trucks. Original trucks also feature a wave-cam mechanism to control the lean and turn of the truck.</p>
-
-<!-- end .content -->
-</div>
-
-
-<!--
-<!doctype html>
-<html>
-<head>
-
-  <link href="/style.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-  <div class="right">
-    <% if(user.username == "Guest") { %>
-      Please <a href="/login">Login</a>
-      <% } else { %>
-        Welcome <%= user.username %>.  Not you? <a href="/logout">logout</a>
-        <% } %>
-      </div>

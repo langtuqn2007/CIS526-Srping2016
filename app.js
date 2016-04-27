@@ -33,7 +33,7 @@ app.get('/logout', session.destroy);
 
 // post routes
 var post = require('./endpoints/post');
-app.get('/post', post.index);
+app.get('/', post.index);
 app.get('/post/users', adminOnly, post.users);
 app.get('/post/new', noGuests, post.new);
 app.get('/post/:id/edit',noBan, post.edit);
