@@ -34,7 +34,6 @@ app.get('/logout', session.destroy);
 // post routes
 var post = require('./endpoints/post');
 app.get('/', post.index);
-app.get('/post', post.index);
 app.get('/post/users', adminOnly, post.users);
 app.get('/post/new', noGuests, post.new);
 app.get('/post/:id/edit',noBan, post.edit);
@@ -43,7 +42,7 @@ app.get('/post/:id/addComment',noGuests, post.addComment);
 app.post('/post/:id/pushComment', post.pushComment);
 app.get('/post/:id/ban', post.ban);
 app.post('/post/:id', post.update);
-app.get('/post/:id', post.show);
+app.get('/post/:id', post.show); //change
 app.post('/post', post.create);
 app.get('/post/:id/delete', post.destroy);
 

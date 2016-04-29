@@ -26,10 +26,8 @@ class post {
         console.error(err);
         return res.sendStatus(400);
       }
-
       var temp = convert.makeHtml(item.body);
       item.body = temp;
-
       res.render('post/show', {post: item, user: req.user});
     });
   }
