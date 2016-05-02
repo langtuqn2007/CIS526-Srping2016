@@ -1,17 +1,20 @@
 
 <%- include('../layout/header', {title: "Sign Up", user: user}) %>
-
+<div class="Signup">
+  <br>
+  <br>
+  <br>
   <h1>Fill out the form below to sign up</h1>
-  <form action="/users/new" method="post">
-    Name <input type="text" placeholder="First name"/>
-    <input type="text" placeholder="Last name"/>
-    Email <input type="text"/>
-    Description <input type="textarea"/>
-    <input type="submit" value="Send"/>
-</form>
+    <form action="/users/new" method="post">
+      Username <input type="username" placeholder="username"/>
+      Password <input type="password" placeholder="password"/>
+      Name <input type="text" placeholder="First name"/>
+      <input type="text" placeholder="Last name"/>
+      Email <input type="text"/>
+      Description <input type="textarea"/>
+      <input type="submit" value="Send"/>
+    </form>
 
-  <div id="return">
-    <a class="btn btn-large btn-info" href="/">Return to the homepage</a>
-  </div>
-
-  <%- include('../layout/footer') %>
+    <a href="/">Return to the homepage</a>
+</div>
+<%- include('../layout/footer') %>
