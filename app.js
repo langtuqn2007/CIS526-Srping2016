@@ -46,6 +46,13 @@ app.get('/post/:id', post.show); //change
 app.post('/post', post.create);
 app.get('/post/:id/delete', post.destroy);
 
+// users routes
+var users = require('./endpoints/user');
+app.get('/users', users.index);
+app.get('/users/new', users.new);
+app.post('/users/new', users.create);
+app.get('/users/:id/delete', users.destroy);
+
 // Reservation routes
 var reservation = require('./endpoints/reservation');
 app.get('/reservation/new', noGuests, reservation.new);

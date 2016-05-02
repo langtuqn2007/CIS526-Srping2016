@@ -166,15 +166,14 @@
   }
 </style>
 
-<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
-<link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css">
+<script src="../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css">
 </head>
-
 <body>
 
 <div class="container">
 <div class="header" style="text-align:right">
-<img src="src/icon.png" alt="Hobby Finder" style="float:left;padding-top:10px;padding-left:10px">
+<img src="../src/icon.png" alt="Hobby Finder" style="float:left;padding-top:10px;padding-left:10px">
 <ul id="MenuBar1" class="MenuBarHorizontal">
   <li><a href="/">home</a>
   </li>
@@ -184,7 +183,7 @@
   </li>
 </ul>
 <% if(user.username == "Guest") { %>
-  You can <a href="/login">login or sign up here</a>
+  You can <a href="/login">login</a> or <a href="/users/new">sign up here</a>
   <% } else { %>
     Welcome <%= user.username %>.  Not you? <a href="/logout">logout</a>
     <% } %>
@@ -193,10 +192,7 @@
 <div class="sidebar1">
 <ul class="nav">
 </ul>
-<img src="src/dumby_pro_pic.png" alt="Profile Pic" style="">
+<img src="../src/dumby_pro_pic.png" alt="Profile Pic" style="">
 <ul>friends</ul>
 <ul>manage</ul>
 </div>
-<div class="content">
-</div>
-</body>
