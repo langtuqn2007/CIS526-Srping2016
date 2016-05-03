@@ -24,7 +24,7 @@ class Session {
         if(!user) return res.render('session/new', {message: "Username/Password not found.  Please try again.", user: req.user});
         if(user.password_digest != encryption.digest(fields.password + user.salt)) return res.render('session/new', {message: "Username/Password not found.  Please try again.", user: req.user});
         req.session.user_id = user.id;
-        return res.redirect('/page');
+        return res.redirect('/');
       });
     });
   }
