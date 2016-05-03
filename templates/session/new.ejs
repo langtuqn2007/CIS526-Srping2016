@@ -20,10 +20,9 @@
 
       <div class="tab-content">
         <div id="signup">
-          <h1>Sign Up for Free</h1>
+          <h1>Fill out the form below to sign up</h1>
 
-          <form action="/login" method="post">
-
+          <form action="/users/new" method="post">
             <div class="top-row">
               <div class="field-wrap">
                 <label>
@@ -42,9 +41,9 @@
 
             <div class="field-wrap">
               <label>
-                Email Address<span class="req">*</span>
+                User Name<span class="req">*</span>
               </label>
-              <input type="email"required autocomplete="off"/>
+              <input type="username"required autocomplete="off"/>
             </div>
 
             <div class="field-wrap">
@@ -67,16 +66,18 @@
 
               <div class="field-wrap">
               <label>
-                Email Address<span class="req">*</span>
+                User Name<span class="req">*</span>
               </label>
-              <input type="email"required autocomplete="off"/>
+
+              <input type="text" class="form-control" id="username" name="username" value="" required autocomplete="off"/>
+
             </div>
 
             <div class="field-wrap">
               <label>
                 Password<span class="req">*</span>
               </label>
-              <input type="password"required autocomplete="off"/>
+              <input type="password" class="form-control" id="password" name="password"value="" required autocomplete="off"/>
             </div>
             <button class="button button-block"/>Log In</button>
 
