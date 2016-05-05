@@ -36,12 +36,12 @@ class users {
     var form = new formidable.IncomingForm();
     var salt = encryption.salt();
     form.parse(req,function(err,fields,files){
-      db.run('INSERT INTO users (username,admin,password_digest,salt) values (?,?,?,?)',
+      db.run('INSERT INTO users (username,admin,ban,password_digest,salt) values (?,?,?,?,?)',
         fields.username,
+        false,
         false,
         encryption.digest(fields.password+salt),
         salt
-        //false
         );
       res.redirect('/login');
     });
@@ -49,9 +49,10 @@ class users {
 
   destroy(req, res) {
     db.run('DELETE FROM users WHERE id=?', req.params.id);
-    res.redirect('/users');
+    res.redirect('post/');
   }
 
+  
 /*  banUser(req,res){
     var form = new formidable.IncomingForm();
     form.parse(req,function(err,fields,files){

@@ -46,6 +46,7 @@ app.get('/post/:id', post.show); //change
 app.post('/post', post.create);
 app.get('/post/:id/delete', post.destroy);
 
+//hobby routes
 // users routes
 var users = require('./endpoints/user');
 app.get('/users', users.index);

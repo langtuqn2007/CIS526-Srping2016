@@ -79,7 +79,7 @@ class post {
         fields.title,
         fields.body
       );
-      res.redirect('/post');
+      res.redirect('/');
     });
   }
 
@@ -115,7 +115,7 @@ class post {
     }else if(!user.ban){
       db.run('UPDATE users SET ban=? WHERE ID=?',true,user.id);
     }
-    res.redirect('/post');
+    res.redirect('/post/users');
   }
 
   destroy(req, res) {
