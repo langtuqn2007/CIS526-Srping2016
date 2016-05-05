@@ -49,28 +49,28 @@ class users {
 
   destroy(req, res) {
     db.run('DELETE FROM users WHERE id=?', req.params.id);
-    res.redirect('post/');
+    res.redirect('/users');
   }
 
-  
-/*  banUser(req,res){
+
+  ban(req,res){
     var form = new formidable.IncomingForm();
     form.parse(req,function(err,fields,files){
-      db.run('UPDATE users SET banuser=? WHERE username=?',
+      db.run('UPDATE users SET ban=? WHERE username=?',
         true,
-        fields.username);
+        req.params.id);
       res.redirect('/users');
     });
   }
 
-  unbanUser(req,res){
+  unban(req,res){
     var form = new formidable.IncomingForm();
     form.parse(req,function(err,fields,files){
-      db.run('UPDATE users SET banuser=? WHERE username=?',
+      db.run('UPDATE users SET ban=? WHERE username=?',
         false,
-        fields.username);
+        req.params.id);
       res.redirect('/users');
     });
-  }*/
+  }
 }
 module.exports = exports = new users();

@@ -2,29 +2,18 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 <div class="container">
-  <%- include('../layout/header', {title: "User List", user: user}) %>
+  <%- include('../layout/header2', {title: "User List", user: user}) %>
   <% title = "List of Users" %>
   <h1>List of Users</h1>
   <div class="panel panel-default">
     <div class="panel-body">
-      <ul>
+      <table border="1" >
+        <tr><td>Username</td><td>Admin privilege</td><td>Ban Option</td><td>Delete User</td></tr>
         <% users.forEach(function(equip) { %>
           <%- include('_users', {users: equip}) %>
         <% }); %>
-      </ul>
+      </table>
     </div>
-
-    <form method="POST" action="/users/ban">
-      <label for="ban">Ban User:</label>
-      <input name="username" type="text" />
-      <input type="submit" value="Ban this user" class="btn btn-primary btn-md">
-    </form>
-
-    <form method="POST" action="/users/unban">
-      <label for="unban">UnBan User:</label>
-      <input name="username" type="text" />
-      <input type="submit" value="Unban this user" class="btn btn-primary btn-md">
-    </form>
   </div>
 
   <div id="return">
