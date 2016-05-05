@@ -52,6 +52,7 @@ class users {
     res.redirect('post/');
   }
 
+  
 /*  banUser(req,res){
     var form = new formidable.IncomingForm();
     form.parse(req,function(err,fields,files){
