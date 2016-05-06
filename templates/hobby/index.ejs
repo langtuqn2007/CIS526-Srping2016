@@ -5,12 +5,12 @@
     <div class="panel-body">
       <ul>
         <% hobby.forEach(function(hobby) { %>
-          <%- include('_hobby', {hobby: hobby}) %>
+          <%- include('_index', {hobby: hobby}) %>
         <% }); %>
       </ul>
 
       <a href="/hobby/new">New hobby</a>
-      
+
     </div>
   </div>
 

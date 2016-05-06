@@ -1,4 +1,8 @@
 <li>
     <%= hobbyUser.userName %>
+    <% if(hobbyUser.userName == user.username){ %>
+        <%- include('_unsubscribe', {hobbyUser: hobbyUser}) %>
+    <%  } %>
+
   </a> &nbsp;
 </li>

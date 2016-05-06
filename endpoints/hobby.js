@@ -22,7 +22,7 @@ class hobby {
         console.error(err);
         return res.sendStatus(500);
       }
-      res.render('hobby/show', {hobbyUser: hobbyUser, user: req.user, name: req.params.hobbyName});
+      res.render('hobby/show', {hobbyUser: hobbyUser, user: req.user, name: req.params.id});
     });
   }
 
@@ -44,6 +44,25 @@ class hobby {
     db.run('DELETE FROM hobby WHERE id=?', req.params.id);
     res.redirect('/hobby');
   }
+
+  subscribe(req, res) {
+    var hobbyUser = db.all('SELECT * FROM hobbyUser', function(err, hobbyUser){
+      if(err) {
+        console.error(err);
+        return res.sendStatus(500);
+      }
+      db.run('DELETE FROM hobbyUser where hobbyName=? AND userName=?', req.params.id, req.user.username); //temp fix to prevent duplicated user subs,
+      db.run('INSERT INTO hobbyUser (hobbyName, username) values(?,?)', req.params.id, req.user.username);//previous data deleted before adding new one
+      res.redirect('/hobby/'+ req.params.id);
+
+    });
+  }
+
+  unsubscribe (req, res) {
+    db.run('DELETE FROM hobbyUser where hobbyName=? AND userName=?', req.params.id, req.user.username);
+    res.redirect('/hobby/'+ req.params.id);
+  }
+
 
 }
 module.exports = exports = new hobby();

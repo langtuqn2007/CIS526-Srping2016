@@ -49,10 +49,12 @@ app.get('/post/:id/delete', post.destroy);
 //hobby routes
 var hobby = require('./endpoints/hobby');
 app.get('/hobby', hobby.index);
-//app.get('/hobby/:hobbyName', hobby.showUser); weird bug here
 app.get('/hobby/new', hobby.new);
 app.post('/hobby', hobby.add);
 app.get('/hobby/:id/delete', hobby.delete);
+app.get('/hobby/:id', hobby.showUser);
+app.get('/hobby/:id/subscribe', hobby.subscribe);
+app.get('/hobby/:id/unsubscribe', hobby.unsubscribe);
 
 // users routes
 var users = require('./endpoints/user');
