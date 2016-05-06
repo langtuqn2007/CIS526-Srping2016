@@ -47,12 +47,15 @@ app.post('/post', post.create);
 app.get('/post/:id/delete', post.destroy);
 
 //hobby routes
+
 // users routes
 var users = require('./endpoints/user');
 app.get('/users', users.index);
 app.get('/users/new', users.new);
 app.post('/users/new', users.create);
 app.get('/users/:id/delete', users.destroy);
+app.get('/users/:id/ban', users.ban)
+app.get('/users/:id/unban', users.unban)
 
 // Reservation routes
 var reservation = require('./endpoints/reservation');
