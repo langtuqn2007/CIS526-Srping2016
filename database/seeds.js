@@ -58,13 +58,25 @@ db.serialize(function() {
     console.log(row);
   });
 
+  // Drop hobby table if it exists
+  db.run("DROP TABLE IF EXISTS hobby")
+  // Create the hobby table
+  db.run("CREATE TABLE hobby (id INTEGER PRIMARY KEY, name VARCHAR(64))")
+  for(var i = 0; i < 5; i++) {
+    db.run("INSERT INTO hobby (name) VALUES ('Hobby "+i+"')");
+  }
   // Drop hobbyUser table if it exists
   db.run("DROP TABLE IF EXISTS hobbyUser");
   // Create the hobbyUser table
-  db.run("CREATE TABLE hobby (id INTEGER PRIMARY KEY, userName VARCHAR(64), hobbyName VARCHAR(64) )");
-  /*for(var i = 0; i < 5; i++) {
-    db.run("INSERT INTO hobby (hobbyName) VALUES ('Hobby "+i+"')");
-  }*/
+  db.run("CREATE TABLE hobbyUser (id INTEGER PRIMARY KEY, hobbyName VARCHAR(64), userName VARCHAR(64) )");
+  for(var i = 0; i < 5; i++) {
+    db.run("INSERT INTO hobbyUser (hobbyName, userName) VALUES ('Hobby "+i+"', 'John')");
+  }
+  // Drop hobbyPost table if it exists
+  db.run("DROP TABLE IF EXISTS hobbyPost");
+  // Create the hobbyPost table
+  db.run("CREATE TABLE hobbyPost (id INTEGER PRIMARY KEY, hobbyName VARCHAR(64), postID INTEGER)");
+  // Log contents of post table to the console
 
   /*// Create third table, user to hobby,hobby to user
   // Drop userhobby table if it exists
@@ -79,10 +91,6 @@ db.serialize(function() {
   });*/
 
   // another table for post to hobby
-  // Drop hobbyPost table if it exists
-  db.run("DROP TABLE IF EXISTS hobbyPost");
-  // Create the hobbyPost table
-  db.run("CREATE TABLE hobbyPost (id INTEGER PRIMARY KEY, hobbyName VARCHAR(64), postID INTEGER)");
-  // Log contents of post table to the console
+
 
 });

@@ -1,0 +1,20 @@
+<div class="container">
+  <%- include('../layout/header2', {title: "Hobby List", user: user}) %>
+  <% title = "List of Hobbies" %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <ul>
+        <% hobby.forEach(function(hobby) { %>
+          <%- include('_hobby', {hobby: hobby}) %>
+        <% }); %>
+      </ul>
+
+      <a href="/hobby/new">New hobby</a>
+
+    </div>
+  </div>
+
+  <div id="return">
+    <a class="btn btn-large btn-info" href="/">Return to the homepage</a>
+  </div>
+</div>
