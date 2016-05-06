@@ -42,11 +42,17 @@ app.get('/post/:id/addComment',noGuests, post.addComment);
 app.post('/post/:id/pushComment', post.pushComment);
 app.get('/post/:id/ban', post.ban);
 app.post('/post/:id', post.update);
-app.get('/post/:id', post.show); //change
+app.get('/post/:id', post.show);
 app.post('/post', post.create);
 app.get('/post/:id/delete', post.destroy);
 
 //hobby routes
+var hobby = require('./endpoints/hobby');
+app.get('/hobby', hobby.index);
+//app.get('/hobby/:hobbyName', hobby.showUser); weird bug here
+app.get('/hobby/new', hobby.new);
+app.post('/hobby', hobby.add);
+app.get('/hobby/:id/delete', hobby.delete);
 
 // users routes
 var users = require('./endpoints/user');
