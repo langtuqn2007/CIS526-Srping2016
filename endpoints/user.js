@@ -48,9 +48,12 @@ class users {
   }
 
   destroy(req, res) {
-    db.run('DELETE FROM users WHERE id=?', req.params.id);
-    res.redirect('/users');
-  }
+      if (req.params.id != 1)
+      {
+        db.run('DELETE FROM users WHERE id=?', req.params.id);
+      }
+      res.redirect('/users');
+    }
 
 
   ban(req,res){
