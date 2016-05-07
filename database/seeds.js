@@ -52,8 +52,6 @@ db.serialize(function() {
   for(var i = 0; i < 5; i++) {
     db.run("INSERT INTO post (title, body) VALUES ('Racecar "+i+"', 'Racecar Racecar Racecar Racecar Racecar Racecar Racecar Racecar')");
   }
-<<<<<<< HEAD
-=======
 
   // Drop hobby table if it exists
   db.run("DROP TABLE IF EXISTS hobby")
@@ -62,16 +60,7 @@ db.serialize(function() {
   for(var i = 0; i < 5; i++) {
     db.run("INSERT INTO hobby (name) VALUES ('Hobby "+i+"')");
   }
->>>>>>> 1a2bb2e3ce95639d22c75148abceb68a10f27e1f
 
-  // Drop hobby table if it exists
-  db.run("DROP TABLE IF EXISTS hobby")
-  // Create the hobby table
-  db.run("CREATE TABLE hobby (id INTEGER PRIMARY KEY, name VARCHAR(64))")
-  for(var i = 0; i < 5; i++) {
-    db.run("INSERT INTO hobby (name) VALUES ('Hobby "+i+"')");
-  }
-  
   // Drop hobbyUser table if it exists
   db.run("DROP TABLE IF EXISTS hobbyUser");
   // Create the hobbyUser table

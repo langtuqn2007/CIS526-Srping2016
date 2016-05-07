@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<%- include('../layout/header2', {title: "Edit Post", user: user}) %>
+<%- include('../layout/header', {title: "Edit Post", user: user}) %>
 <h1>Edit Post</h1>
 <form action="/hobby/<%= name %>/<%= post.title %>" method="POST">
   <p>
@@ -14,10 +13,3 @@
     <input type="submit" value="Save" />
   </p>
 </form>
-=======
-
-<li>
-    <div>Title: <a href="/hobby/<%= name %>/<%= post.title %>"><%= post.title %> </a> </div>
-    <div>Author: <%= post.author %> <p></div>
-</li>
->>>>>>> 1a2bb2e3ce95639d22c75148abceb68a10f27e1f
