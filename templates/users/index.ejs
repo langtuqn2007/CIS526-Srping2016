@@ -2,7 +2,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 <div class="container">
-  <%- include('../layout/header2', {title: "User List", user: user}) %>
+  <%- include('../layout/header', {title: "User List", user: user}) %>
   <% title = "List of Users" %>
   <h1>List of Users</h1>
   <div class="panel panel-default">
@@ -20,3 +20,4 @@
     <a class="btn btn-large btn-info" href="/">Return to the homepage</a>
   </div>
 </div>
+<%- include('../layout/footer') %>
