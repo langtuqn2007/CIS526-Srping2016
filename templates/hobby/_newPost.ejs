@@ -1,4 +1,17 @@
-<li>
-    <div>Title: <a href="/hobby/<%= name %>/<%= post.title %>"><%= post.title %> </a> </div>
-    <div>Author: <%= post.author %> <p></div>
-</li>
+<div class="panel panel-default">
+  <div class="panel-body">
+<h2>
+    <a href="/hobby/<%= name %>/<%= post.title %>"><%= post.title %></a>
+</h2>
+<p class="lead">
+    Author: <a href="/users/<%= post.author %>"><%= post.author %></a>
+</p>
+<hr>
+<a href="blog-post.html">
+    <img class="img-responsive img-hover" src="http://placehold.it/900x300" alt="">
+</a>
+<hr>
+<p>fdasfdfdasf</p>
+<a class="btn btn-primary" href="#">Read More <i class="fa fa-angle-right"></i></a>
+</div>
+</div>
