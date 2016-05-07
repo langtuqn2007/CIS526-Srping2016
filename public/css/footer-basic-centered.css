@@ -7,7 +7,7 @@
 	text-align: center;
 	font: normal 18px sans-serif;
 
-	padding: 45px;
+	padding: 20px;
 	margin-top: 100px;
 }
 
@@ -27,7 +27,7 @@
 	list-style: none;
 	font-weight: bold;
 	color:  #ffffff;
-	padding: 35px 0 23px;
+	padding: 10px 0 10px;
 	margin: 0;
 }
 
@@ -46,7 +46,7 @@
 	}
 
 	.footer-basic-centered .footer-company-motto{
-		font-size: 18px;
+		font-size: 12px;
 	}
 
 	.footer-basic-centered .footer-company-name{
@@ -55,7 +55,7 @@
 
 	.footer-basic-centered .footer-links{
 		font-size: 14px;
-		padding: 25px 0 20px;
+		padding: 15px 0 20px;
 	}
 
 	.footer-basic-centered .footer-links a{

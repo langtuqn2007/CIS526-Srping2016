@@ -1,11 +1,11 @@
 <div class="container">
-  <%- include('../layout/header2', {title: "Hobby List", user: user}) %>
+  <%- include('../layout/header', {title: "Hobby List", user: user}) %>
   <% title = "List of Hobbies" %>
   <div class="panel panel-default">
     <div class="panel-body">
       <ul>
         <% hobby.forEach(function(hobby) { %>
-          <%- include('_hobby', {hobby: hobby}) %>
+          <%- include('_index', {hobby: hobby}); %>
         <% }); %>
       </ul>
 

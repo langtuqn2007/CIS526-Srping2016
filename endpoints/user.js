@@ -75,5 +75,35 @@ class users {
       res.redirect('/users');
     });
   }
+  profile(req,res){
+    var profile = db.get('SELECT * FROM users WHERE username=?', req.params.id, function(err, profile){
+      if(err) {
+        console.error(err);
+        return res.sendStatus(400);
+      }
+      res.render('users/profile', {profile: profile, user: req.user, name: req.params.id});
+    });
+  }
+
+  editProfile(req,res){
+    var profile = db.get('SELECT * FROM users WHERE username=?', req.params.id, function(err, profile){
+      if(err) {
+        console.error(err);
+        return res.sendStatus(400);
+      }
+      res.render('users/editProfile', {profile: profile, user: req.user, name: req.params.id});
+    });
+  }
+
+  updateProfile(req,res){
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+      db.run('UPDATE users SET phone=?,email=? WHERE username=? ',
+        fields.phone,
+        fields.email,
+        req.params.id);
+      res.redirect('/users/'+req.params.id);
+    });
+  }
 }
 module.exports = exports = new users();

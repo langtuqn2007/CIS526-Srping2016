@@ -49,10 +49,18 @@ app.get('/post/:id/delete', post.destroy);
 //hobby routes
 var hobby = require('./endpoints/hobby');
 app.get('/hobby', hobby.index);
-//app.get('/hobby/:hobbyName', hobby.showUser); weird bug here
 app.get('/hobby/new', hobby.new);
 app.post('/hobby', hobby.add);
-app.get('/hobby/:id/delete', hobby.delete);
+app.get('/hobby/:id/delete',noGuests, hobby.delete);
+app.get('/hobby/:id', hobby.showUser);
+app.get('/hobby/:id/subscribe',noGuests, hobby.subscribe);
+app.get('/hobby/:id/unsubscribe',noGuests, hobby.unsubscribe);
+app.get('/hobby/:id/newpost',noGuests, hobby.newPost);
+app.post('/hobby/:id',noGuests, hobby.createPost);
+app.get('/hobby/:id/:title', hobby.showPost);
+app.get('/hobby/:id/:title/edit',noBan, hobby.editPost);
+app.post('/hobby/:id/:title',noBan, hobby.updatePost);
+app.get('/hobby/:id/:title/delete',adminOnly, hobby.deletePost);
 
 // users routes
 var users = require('./endpoints/user');
@@ -60,8 +68,11 @@ app.get('/users', users.index);
 app.get('/users/new', users.new);
 app.post('/users/new', users.create);
 app.get('/users/:id/delete', users.destroy);
-app.get('/users/:id/ban', users.ban)
-app.get('/users/:id/unban', users.unban)
+app.get('/users/:id/ban', users.ban);
+app.get('/users/:id/unban', users.unban);
+app.get('/users/:id', users.profile);
+app.get('/users/:id/edit', users.editProfile);
+app.post('/users/:id', users.updateProfile);
 
 // Reservation routes
 var reservation = require('./endpoints/reservation');
