@@ -61,7 +61,7 @@ app.post('/hobby/:id',noGuests, hobby.createPost);
 app.get('/hobby/:id/:title', hobby.showPost);
 app.get('/hobby/:id/:title/edit',noBan, hobby.editPost);
 app.post('/hobby/:id/:title',noBan, hobby.updatePost);
-app.get('/hobby/:id/:title/delete',adminOnly, hobby.deletePost);
+app.get('/hobby/:id/:title/delete',noBan, hobby.deletePost);
 
 // users routes
 var users = require('./endpoints/user');
