@@ -1,0 +1,15 @@
+<div class="container">
+  <%- include('../layout/header2', {title: "Hobby List", user: user}) %>
+  <% title = "Post" %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div>Title: <%= post.title %> </div>
+      <div>Author: <%= post.author %> </div>
+      <div> <p><p><%= post.body %> </p></div>
+      <div> <a class='bttn' href="/hobby/<%= name %>/<%= post.title %>/edit">Edit</a> <a class='bttn' href="/hobby/<%= name %>/<%= post.title %>/delete">Delete</a> <p></div>
+    </div>
+  </div>
+  <div id="return">
+    <a class="btn btn-large btn-info" href="/hobby/<%= name %>">Go back</a>
+  </div>
+</div>

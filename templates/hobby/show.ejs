@@ -3,6 +3,7 @@
   <% title = "List of Users with this hobby" %>
   <div class="panel panel-default">
     <div class="panel-body">
+      <h1>Users subscribed to <%= name %> </h1>
       <ul>
         <% hobbyUser.forEach(function(hobbyUser) { %>
           <% if(hobbyUser.hobbyName == name) { %>
@@ -13,10 +14,17 @@
 
       <a href="/hobby/<%= name %>/subscribe" >Subscribe</a>
 
+      <h1>Posts about <%= name %> </h1>
+      <ul>
+        <% post.forEach(function(post) { %>
+            <%- include('_newPost', {post: post}) %>
+        <% }); %>
+      </ul>
+      <a href="/hobby/<%= name %>/newpost" >New Post</a>
     </div>
   </div>
 
   <div id="return">
-    <a class="btn btn-large btn-info" href="/hobby">Return to the hobbies</a>
+    <a class="btn btn-large btn-info" href="/hobby">Return to hobbies</a>
   </div>
 </div>

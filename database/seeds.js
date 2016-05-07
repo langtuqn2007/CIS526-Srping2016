@@ -75,7 +75,7 @@ db.serialize(function() {
   // Drop hobbyPost table if it exists
   db.run("DROP TABLE IF EXISTS hobbyPost");
   // Create the hobbyPost table
-  db.run("CREATE TABLE hobbyPost (id INTEGER PRIMARY KEY, hobbyName VARCHAR(64), postID INTEGER)");
+  db.run("CREATE TABLE hobbyPost (id INTEGER PRIMARY KEY, hobbyName VARCHAR(64),  title VARCHAR(64), body TEXT, author VARCHAR(64))");
   // Log contents of post table to the console
 
   /*// Create third table, user to hobby,hobby to user
