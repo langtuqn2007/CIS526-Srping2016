@@ -5,7 +5,8 @@ var express = require('express'),
     noGuests = require('./middleware/no_guests'),
     adminOnly = require('./middleware/admin_only'),
     noBan = require('./middleware/no_ban'),
-    encryption = require('./encryption');
+    encryption = require('./encryption'),
+    request = require('request');
 
 // Enable template engine
 app.set('view engine', 'ejs');
@@ -81,3 +82,7 @@ app.get('/reservation/new', noGuests, reservation.new);
 app.listen(80, () => {
   console.log("Listening on port 80...");
 });
+
+exports.closeServer = function(){
+  server.close();
+};
