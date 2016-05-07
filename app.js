@@ -60,7 +60,7 @@ app.post('/hobby/:id',noGuests, hobby.createPost);
 app.get('/hobby/:id/:title', hobby.showPost);
 app.get('/hobby/:id/:title/edit',noBan, hobby.editPost);
 app.post('/hobby/:id/:title',noBan, hobby.updatePost);
-app.get('/hobby/:id/:title/delete',noBan, hobby.deletePost);
+app.get('/hobby/:id/:title/delete',adminOnly, hobby.deletePost);
 
 // users routes
 var users = require('./endpoints/user');
@@ -68,8 +68,11 @@ app.get('/users', users.index);
 app.get('/users/new', users.new);
 app.post('/users/new', users.create);
 app.get('/users/:id/delete', users.destroy);
-app.get('/users/:id/ban', users.ban)
-app.get('/users/:id/unban', users.unban)
+app.get('/users/:id/ban', users.ban);
+app.get('/users/:id/unban', users.unban);
+app.get('/users/:id', users.profile);
+app.get('/users/:id/edit', users.editProfile);
+app.post('/users/:id', users.updateProfile);
 
 // Reservation routes
 var reservation = require('./endpoints/reservation');

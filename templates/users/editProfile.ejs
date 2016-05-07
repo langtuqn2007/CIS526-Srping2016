@@ -1,0 +1,16 @@
+<%- include('../layout/header2', {title: "Edit Profile", user: user}) %>
+<% title = "Edit Profile" %>
+<h1>Edit Profile</h1>
+<form action="/users/<%= name %>" method="POST">
+  <p>
+    <label for="Phone Number">Phone Number:</label>
+    <input name="phone" type="text" value="<%= profile.phone %>" />
+  </p>
+  <p>
+    <label for="Email">Email:</label>
+    <input name="email" type="text" value="<%= profile.email %>" />
+  </p>
+  <p>
+    <input type="submit" value="Update" />
+  </p>
+</form>
