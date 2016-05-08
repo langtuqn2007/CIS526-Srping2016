@@ -51,18 +51,18 @@ app.get('/post/:id/delete', post.destroy);
 //hobby routes
 var hobby = require('./endpoints/hobby');
 app.get('/hobby', hobby.index);
-app.get('/hobby/new', hobby.new);
+app.get('/hobby/new', noBan, hobby.new);
 app.post('/hobby', hobby.add);
 app.get('/hobby/:id/delete',adminOnly, hobby.delete);
-app.get('/hobby/:id', hobby.showUser);
+app.get('/hobby/:id', hobby.showUserAndPost);
 app.get('/hobby/:id/subscribe',noGuests, hobby.subscribe);
 app.get('/hobby/:id/unsubscribe',noGuests, hobby.unsubscribe);
 app.get('/hobby/:id/newpost',noBan, hobby.newPost);
-app.post('/hobby/:id',noGuests, hobby.createPost);
+app.post('/hobby/:id', hobby.createPost);
 app.get('/hobby/:id/:title', hobby.showPost);
-app.get('/hobby/:id/:title/edit',noBan, hobby.editPost);
-app.post('/hobby/:id/:title',noBan, hobby.updatePost);
-app.get('/hobby/:id/:title/delete',noBan, hobby.deletePost);
+app.get('/hobby/:id/:title/edit', hobby.editPost);
+app.post('/hobby/:id/:title', hobby.updatePost);
+app.get('/hobby/:id/:title/delete', hobby.deletePost);
 
 // users routes
 var users = require('./endpoints/user');
