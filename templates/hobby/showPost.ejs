@@ -6,7 +6,11 @@
       <div>Title: <%= post.title %> </div>
       <div>Author: <%= post.author %> </div>
       <div> <p><p><%= post.body %> </p></div>
-      <div> <a class='bttn' href="/hobby/<%= name %>/<%= post.title %>/edit">Edit</a> <a class='bttn' href="/hobby/<%= name %>/<%= post.title %>/delete">Delete</a> <p></div>
+      <div>
+        <% if(post.author == user.username) { %>
+        <%- include('_showPost', {post: post, name: name}) %>
+        <%  } %>
+      </div>
     </div>
   </div>
   <div id="return">

@@ -5,7 +5,8 @@ var express = require('express'),
     noGuests = require('./middleware/no_guests'),
     adminOnly = require('./middleware/admin_only'),
     noBan = require('./middleware/no_ban'),
-    encryption = require('./encryption');
+    encryption = require('./encryption'),
+    request = require('request');
 
 // Enable template engine
 app.set('view engine', 'ejs');
@@ -51,16 +52,16 @@ var hobby = require('./endpoints/hobby');
 app.get('/hobby', hobby.index);
 app.get('/hobby/new', hobby.new);
 app.post('/hobby', hobby.add);
-app.get('/hobby/:id/delete',noGuests, hobby.delete);
+app.get('/hobby/:id/delete',adminOnly, hobby.delete);
 app.get('/hobby/:id', hobby.showUser);
 app.get('/hobby/:id/subscribe',noGuests, hobby.subscribe);
 app.get('/hobby/:id/unsubscribe',noGuests, hobby.unsubscribe);
-app.get('/hobby/:id/newpost',noGuests, hobby.newPost);
+app.get('/hobby/:id/newpost',noBan, hobby.newPost);
 app.post('/hobby/:id',noGuests, hobby.createPost);
 app.get('/hobby/:id/:title', hobby.showPost);
 app.get('/hobby/:id/:title/edit',noBan, hobby.editPost);
 app.post('/hobby/:id/:title',noBan, hobby.updatePost);
-app.get('/hobby/:id/:title/delete',adminOnly, hobby.deletePost);
+app.get('/hobby/:id/:title/delete',noBan, hobby.deletePost);
 
 // users routes
 var users = require('./endpoints/user');
@@ -81,3 +82,7 @@ app.get('/reservation/new', noGuests, reservation.new);
 app.listen(80, () => {
   console.log("Listening on port 80...");
 });
+
+exports.closeServer = function() {
+  server.close();
+};
