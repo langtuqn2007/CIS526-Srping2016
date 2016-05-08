@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/langtuqn2007/CIS526-Srping2016#readme",
   "dependencies": {
+    "assert": "^1.3.0",
     "client-sessions": "^0.7.0",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
