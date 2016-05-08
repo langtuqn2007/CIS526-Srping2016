@@ -1,6 +1,37 @@
-<tr>
+<tr align="center">
+
   <td><%= users.username %></td>
   <td><%= users.ban %></td>
-  <td padding: 30px><a class='bttn' href="/users/<%= users.username %>/ban">ban</a> / <a class='bttn' href="/users/<%= users.username %>/unban">unban</a></td>
-  <td><a class='bttn' href="/users/<%= users.id %>/delete">x</a></td>
+  <td padding: 30px><button onclick="ban_warning()"> <i class="fa fa-ban" aria-hidden="true"></i></button> / <button onclick="unban_warning()">unban</button></td>
+  <td><button onclick="delete_warning()"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+
 </tr>
+<script>
+// For confirming ban action
+  function ban_warning() {
+    var answer = confirm("Are you sure about this?")
+    if (answer){
+         window.location="/users/<%= users.username %>/ban";
+    }
+    else{
+    }
+  }
+// For confirming unban action
+  function unban_warning() {
+    var answer = confirm("Are you sure about this?")
+    if (answer){
+         window.location="/users/<%= users.username %>/unban";
+    }
+    else{
+    }
+  }
+// For confirming unban action
+  function delete_warning() {
+    var answer = confirm("Are you sure about this?")
+    if (answer){
+         window.location="/users/<%= users.id %>/delete";
+    }
+    else{
+    }
+  }
+</script>
