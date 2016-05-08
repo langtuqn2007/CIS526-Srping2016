@@ -2,14 +2,14 @@
 
   <td><%= users.username %></td>
   <td><%= users.ban %></td>
-  <td padding: 30px><button onclick="ban_warning()"> <i class="fa fa-ban" aria-hidden="true"></i></button> / <button onclick="unban_warning()">unban</button></td>
-  <td><button onclick="delete_warning()"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+  <td padding: 30px><button onclick="location.href = '/users/<%= users.username %>/ban';"> <i class="fa fa-ban" aria-hidden="true"></i></button> / <button onclick="location.href = '/users/<%= users.username %>/unban';">unban</button></td>
+  <td><button onclick="location.href = '/users/<%= users.id %>/delete';"><i class="fa fa-times" aria-hidden="true"></i></button></td>
 
 </tr>
 <script>
 // For confirming ban action
   function ban_warning() {
-    var answer = confirm("Are you sure about this?")
+    var answer = confirm("Are you sure about this? log <%= users.username %>")
     if (answer){
          window.location="/users/<%= users.username %>/ban";
     }
