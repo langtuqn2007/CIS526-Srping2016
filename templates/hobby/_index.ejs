@@ -2,5 +2,15 @@
   <a href="/hobby/<%= hobby.name %>">
     <%= hobby.name %>
   </a> &nbsp;
-  <a class='bttn' href="/hobby/<%= hobby.id %>/delete">x</a>
+  <button onclick="location.href = '/hobby/<%= hobby.id %>/delete';"><i class="fa fa-times" aria-hidden="true"></i></button>
 </li>
+<script>
+  function warning() {
+    var answer = confirm("Are you sure about this?")
+    if (answer){
+         window.location="/hobby/<%= hobby.id %>/delete";
+    }
+    else{
+    }
+  }
+</script>

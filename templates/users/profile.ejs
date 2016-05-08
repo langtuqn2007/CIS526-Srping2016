@@ -3,11 +3,13 @@
 <h1><%= name %></h1>
 <div>Phone number: <%= profile.phone %></div>
 <div>Email: <%= profile.email %></div>
+<p>
 <div>
   <% if(name == user.username){ %>
       <%- include('_profile', {name: name}); %>
   <%  } %>
 </div>
+<p>
 <div id="return">
   <a class="btn btn-large btn-info" href="/hobby">Return to hobbies</a>
 </div>

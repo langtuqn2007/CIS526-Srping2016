@@ -8,7 +8,7 @@
       <div> <p><p><%= post.body %> </p></div>
       <div>
         <% if(post.author == user.username) { %>
-            <%- include('_showPost', {post: post, name: name}) %>
+        <%- include('_showPost', {post: post, name: name}) %>
         <%  } %>
       </div>
     </div>

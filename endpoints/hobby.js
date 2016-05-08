@@ -18,7 +18,7 @@ class hobby {
   }
 
   //get method to show users subscribed to current hobby
-  showUserAndPost(req, res) {
+  showUser(req, res) {
     var hobbyUser = db.all('SELECT * FROM hobbyUser', function(err, hobbyUser){
       if(err) {
         console.error(err);

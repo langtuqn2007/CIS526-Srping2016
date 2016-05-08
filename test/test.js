@@ -60,7 +60,7 @@ describe('Test with users as guest (not logged in)', function(){
     });
   });
   it('should allow guest to view posts by other users in hobbies page and return 200', function (done) {
-    http.get('http://localhost:80/hobby/Hobby%201/ww', function (res) {
+    http.get('http://localhost:80/hobby/Hobby%203/1', function (res) {
       assert.equal(200, res.statusCode);
       done();
     });

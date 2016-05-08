@@ -51,14 +51,14 @@ app.get('/post/:id/delete', post.destroy);
 //hobby routes
 var hobby = require('./endpoints/hobby');
 app.get('/hobby', hobby.index);
-app.get('/hobby/new', noBan, hobby.new);
+app.get('/hobby/new', noGuests, hobby.new);
 app.post('/hobby', hobby.add);
 app.get('/hobby/:id/delete',adminOnly, hobby.delete);
-app.get('/hobby/:id', hobby.showUserAndPost);
+app.get('/hobby/:id', hobby.showUser);
 app.get('/hobby/:id/subscribe',noGuests, hobby.subscribe);
 app.get('/hobby/:id/unsubscribe',noGuests, hobby.unsubscribe);
 app.get('/hobby/:id/newpost',noBan, hobby.newPost);
-app.post('/hobby/:id', hobby.createPost);
+app.post('/hobby/:id',noGuests, hobby.createPost);
 app.get('/hobby/:id/:title', hobby.showPost);
 app.get('/hobby/:id/:title/edit', hobby.editPost);
 app.post('/hobby/:id/:title', hobby.updatePost);
@@ -80,11 +80,10 @@ app.post('/users/:id', users.updateProfile);
 var reservation = require('./endpoints/reservation');
 app.get('/reservation/new', noGuests, reservation.new);
 
-
 app.listen(80, () => {
   console.log("Listening on port 80...");
 });
 
-exports.closeServer = function(){
+exports.closeServer = function() {
   server.close();
 };

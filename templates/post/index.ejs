@@ -1,5 +1,4 @@
 <%- include('../layout/header', {title: "Post List", user: user}) %>
-
 <!-- div Carousel -->
 <div id="myCarousel" class="carousel slide">
     <!-- Indicators -->
@@ -80,16 +79,4 @@
         </div>
     </div>
 </div>
-
-<hr>
-<% title = "Post List" %>
-<h1>List of Post</h1>
-<ul>
-  <% post.forEach(function(post) { %>
-    <%- include('_post', {post: post}) %>
-  <% }); %>
-</ul>
-<a href="/users">Users</a>
-<a href="/post/new">Add post</a>
-<a href="/hobby">Hobby</a>
 <%- include('../layout/footer') %>
