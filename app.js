@@ -8,6 +8,7 @@ var express = require('express'),
     encryption = require('./encryption'),
     request = require('request');
 
+module.exports = app;
 // Enable template engine
 app.set('view engine', 'ejs');
 app.set('views', './templates');
