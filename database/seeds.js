@@ -7,7 +7,7 @@ db.serialize(function() {
   // Drop users table if it exists
   db.run("DROP TABLE IF EXISTS users");
   // Create the users table
-  db.run("CREATE TABLE users (id INTEGER PRIMARY KEY, username TEXT UNIQUE, admin BOOLEAN, ban BOOLEAN, password_digest TEXT, salt TEXT, phone TEXT, email TEXT, age TEXT)");
+  db.run("CREATE TABLE users (id INTEGER PRIMARY KEY, username TEXT UNIQUE, admin BOOLEAN, ban BOOLEAN, password_digest TEXT, salt TEXT, phone TEXT, email TEXT, birthday TEXT, bio TEXT)");
   // Create a default user
   var salt = encryption.salt();
   db.run("INSERT INTO users (username, admin, ban, password_digest, salt) values (?,?,?,?,?)",
@@ -18,10 +18,17 @@ db.serialize(function() {
     salt
   );
   db.run("INSERT INTO users (username, admin, ban, password_digest, salt) values (?,?,?,?,?)",
-    'sucks',
+    'bob',
     false,
     true,
-    encryption.digest('insecurepassword1' + salt),
+    encryption.digest('bob' + salt),
+    salt
+  );
+  db.run("INSERT INTO users (username, admin, ban, password_digest, salt) values (?,?,?,?,?)",
+    'chris',
+    false,
+    false,
+    encryption.digest('chris' + salt),
     salt
   );
   // Log contents of the user table to the console
@@ -30,36 +37,14 @@ db.serialize(function() {
     console.log(row);
   });
 
-  db.run("DROP TABLE IF EXISTS talk");
-  // Create the users table
-  db.run("CREATE TABLE talk (id INTEGER PRIMARY KEY, username TEXT, comment TEXT, p_id INTEGER)");
-  // Create a default user
-  db.run("INSERT INTO talk (username, comment, p_id) values (?,?,?)",
-    'admin',
-    'hello, hello',
-    5
-  );
-  db.each("SELECT * FROM talk", function(err, row){
-    if(err) return console.error(err);
-    console.log(row);
-  });
-
-  // Drop post table if it exists
-  db.run("DROP TABLE IF EXISTS post");
-  // Create the post table
-  db.run("CREATE TABLE post (id INTEGER PRIMARY KEY, title VARCHAR(64), body TEXT )");
-  // Populate the post table
-  for(var i = 0; i < 5; i++) {
-    db.run("INSERT INTO post (title, body) VALUES ('Racecar "+i+"', 'Racecar Racecar Racecar Racecar Racecar Racecar Racecar Racecar')");
-  }
 
   // Drop hobby table if it exists
-  db.run("DROP TABLE IF EXISTS hobby")
+  db.run("DROP TABLE IF EXISTS hobby");
   // Create the hobby table
-  db.run("CREATE TABLE hobby (id INTEGER PRIMARY KEY, name VARCHAR(64))")
-  for(var i = 0; i < 5; i++) {
+  db.run("CREATE TABLE hobby (id INTEGER PRIMARY KEY, name VARCHAR(64))");
+  /*for(var i = 0; i < 5; i++) {
     db.run("INSERT INTO hobby (name) VALUES ('Hobby "+i+"')");
-  }
+  }*/
 
   // Drop hobbyUser table if it exists
   db.run("DROP TABLE IF EXISTS hobbyUser");

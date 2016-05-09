@@ -27,7 +27,7 @@ function loginUser() {
     return function(done) {
         agent
             .post('/login')
-            .send({ username: 'sucks', password: 'insecurepassword1' })
+            .send({ username: 'bob', password: 'bob' })
             .expect(302)
             .end(onResponse);
 
@@ -42,7 +42,7 @@ function loginBan() {
     return function(done) {
         agent
             .post('/login')
-            .send({ username: 'www', password: 'www' })
+            .send({ username: 'chris', password: 'chris' })
             .expect(302)
             .end(onResponse);
 
@@ -108,10 +108,10 @@ describe('Test with users as guest (not logged in)', function(){
 });
 
 describe('Test with logged in regular user', function () {
-  it('should login with user credentials (username: sucks) and return 302', loginUser());
+  it('should login with user credentials (username: bob) and return 302', loginUser());
   it('should be able to go to user profile', function(done){
   agent
-      .get('/users/sucks')
+      .get('/users/bob')
       .expect(200)
       .end(function(err, res){
           if (err) return done(err);
@@ -120,16 +120,16 @@ describe('Test with logged in regular user', function () {
   });
   it('should be able to got to profile edit page and return 200', function(done){
   agent
-      .get('/users/sucks/edit')
+      .get('/users/bob/edit')
       .expect(200)
       .end(function(err, res){
           if (err) return done(err);
           done()
       });
   });
-  it('should be able to update profile and redirect to /users/sucks and return 302', function(done){
+  it('should be able to update profile and redirect to /users/bob and return 302', function(done){
   agent
-      .post('/users/suck')
+      .post('/users/bob')
       .expect(302)
       .end(function(err, res){
           if (err) return done(err);
@@ -211,7 +211,7 @@ describe('Test with logged in regular user', function () {
 });
 
 describe('Test with logged in banned user', function () {
-  it('should login with banned user credentials (username: www) and return 302', loginBan());
+  it('should login with banned user credentials (username: chris) and return 302', loginBan());
   it('should not be able to create new hobby and will render login page and return 200 instead of redirecting after a successful hobby create', function(done){
   agent
       .get('/hobby/new')

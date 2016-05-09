@@ -98,9 +98,11 @@ class users {
   updateProfile(req,res){
     var form = new formidable.IncomingForm();
     form.parse(req, function(err, fields, files) {
-      db.run('UPDATE users SET phone=?,email=? WHERE username=? ',
+      db.run('UPDATE users SET phone=?,email=?,birthday=?,bio=? WHERE username=? ',
         fields.phone,
         fields.email,
+        fields.birthday,
+        fields.bio,
         req.params.id);
       res.redirect('/users/'+req.params.id);
     });
