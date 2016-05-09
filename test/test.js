@@ -23,6 +23,35 @@ function loginAdmin() {
     };
 };
 
+function loginUser() {
+    return function(done) {
+        agent
+            .post('/login')
+            .send({ username: 'sucks', password: 'insecurepassword1' })
+            .expect(302)
+            .end(onResponse);
+
+        function onResponse(err, res) {
+           if (err) return done(err);
+           return done();
+        }
+    };
+};
+
+function loginBan() {
+    return function(done) {
+        agent
+            .post('/login')
+            .send({ username: 'www', password: 'www' })
+            .expect(302)
+            .end(onResponse);
+
+        function onResponse(err, res) {
+           if (err) return done(err);
+           return done();
+        }
+    };
+};
 
 describe('Basic url testing', function () {
   it('/ should return 200', function (done) {
@@ -38,7 +67,6 @@ describe('Basic url testing', function () {
     });
   });
 });
-
 
 describe('Test with users as guest (not logged in)', function(){
   it('should show guest a forbidden message on the page when attempting to access users list and return 200', function(done){
@@ -76,6 +104,131 @@ describe('Test with users as guest (not logged in)', function(){
       assert.equal(200, res.statusCode);
       done();
     });
+  });
+});
+
+describe('Test with logged in regular user', function () {
+  it('should login with user credentials (username: sucks) and return 302', loginUser());
+  it('should be able to go to user profile', function(done){
+  agent
+      .get('/users/sucks')
+      .expect(200)
+      .end(function(err, res){
+          if (err) return done(err);
+          done()
+      });
+  });
+  it('should be able to got to profile edit page and return 200', function(done){
+  agent
+      .get('/users/sucks/edit')
+      .expect(200)
+      .end(function(err, res){
+          if (err) return done(err);
+          done()
+      });
+  });
+  it('should be able to update profile and redirect to /users/sucks and return 302', function(done){
+  agent
+      .post('/users/suck')
+      .expect(302)
+      .end(function(err, res){
+          if (err) return done(err);
+          done()
+      });
+  });
+  it('should be able to create new hobbies then redirect to /hobby and return 302', function(done){
+  agent
+      .post('/hobby')
+      .expect(302)
+      .end(function(err, res){
+          if (err) return done(err);
+          done()
+      });
+  });
+  it('should not be able to delete hobbies and return 403', function(done){
+  agent
+      .get('/hobby/:id/delete')
+      .expect(403)
+      .end(function(err, res){
+          if (err) return done(err);
+          done()
+      });
+  });
+  it('should be able to create new posts in hobbies then redirect to /hobby/:id and return 302', function(done){
+  agent
+      .post('/hobby/:id')
+      .expect(302)
+      .end(function(err, res){
+          if (err) return done(err);
+          done()
+      });
+  });
+  it('should be able to edit said post then redirect to /hobby/:id/:title and return 302', function(done){
+  agent
+      .post('/hobby/:id/:title')
+      .expect(302)
+      .end(function(err, res){
+          if (err) return done(err);
+          done()
+      });
+  });
+  it('should be able to subscribe to a hobby then redirect and return 302', function(done){
+  agent
+      .post('/hobby/:id/subscribe')
+      .expect(302)
+      .end(function(err, res){
+          if (err) return done(err);
+          done()
+      });
+  });
+  it('should be able to unsubscribe to a hobby then redirect and return 302', function(done){
+  agent
+      .post('/hobby/:id/unsubscribe')
+      .expect(302)
+      .end(function(err, res){
+          if (err) return done(err);
+          done()
+      });
+  });
+  it('should not be able to view users page and get an message page and return 200', function(done){
+  agent
+      .get('/users')
+      .expect(200)
+      .end(function(err, res){
+          if (err) return done(err);
+          done()
+      });
+  });
+  it('should successfully logout and return 200', function(done){
+  agent
+      .get('/hobby/logout')
+      .expect(200)
+      .end(function(err, res){
+          if (err) return done(err);
+          done()
+      });
+  });
+});
+
+describe('Test with logged in banned user', function () {
+  it('should login with banned user credentials (username: www) and return 302', loginBan());
+  it('should not be able to create new hobby and will render login page and return 200 instead of redirecting after a successful hobby create', function(done){
+  agent
+      .get('/hobby/new')
+      .expect(200)
+      .end(function(err, res){
+          if (err) return done(err);
+          done()
+      });
+  });
+  it('should not be able to create new post and will render login page and return 200 instead of redirecting after a successful post create', function(done){
+  agent
+      .get('/hobby/:id/newpost')
+      .expect(200)
+      .end(function(err, res){
+          if (err) return done(err);
+          done()
+      });
   });
 });
 

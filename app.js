@@ -51,7 +51,7 @@ app.get('/post/:id/delete', post.destroy);
 //hobby routes
 var hobby = require('./endpoints/hobby');
 app.get('/hobby', hobby.index);
-app.get('/hobby/new', noGuests, hobby.new);
+app.get('/hobby/new', noBan, hobby.new);
 app.post('/hobby', hobby.add);
 app.get('/hobby/:id/delete',adminOnly, hobby.delete);
 app.get('/hobby/:id', hobby.showUser);
